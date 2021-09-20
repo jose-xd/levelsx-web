@@ -1,0 +1,28 @@
+body {
+    background: #242424;
+}
+#pfpImg {
+    width: 100px;
+    height: 100px;
+    float: left;
+    margin-top: -35px;
+}
+#textLeaderboard {
+    float: initial;
+    margin-top: 30px;
+}
+#deleteRole {
+    color: white;
+}
+#deleteRole:hover {
+    color: #2596be;
+}
+#cardColor {
+    background-color: #363636;
+}
+#channelSelect {
+    background-color: #363636;
+}
+#roleSelect {
+    background-color: #363636;
+}

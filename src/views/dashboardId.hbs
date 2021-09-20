@@ -1,0 +1,71 @@
+<div class="row text-light">
+    <h1 class="display-5">{{guild.name}}'s Dashboard <a href="/leaderboard/{{guild.id}}"
+            class="btn btn-info btn-block">Leaderboard</a></h1>
+    <!--Set custom channel and message-->
+    <div class="card mt-2" id="cardColor">
+        <div class="card-body">
+            <form action="/submit/channel/{{guild.id}}?_method=PUT" method="POST">
+                <h5>Custom message for leveling up in custom channel</h5>
+                <h6 class="">You can use ${user}, ${xp}, ${level}. That will replace that with it's value</h6>
+                <input type="hidden" name="_method" value="PUT">
+                <div class="form-group mb-2">
+                    <label for="channelSelect">Choose a channel</label>
+                    <select id="channelSelect" class="form-select text-light" required="required" name="channelId">
+                        {{#each fetchResultChannels}}
+                        <option value="{{id}}">{{name}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                <div class="form-group mb-2">
+                    {{#if channelData.customMessage}}
+                    <textarea name="customMessage" class="form-control text-light" required="required" id="channelSelect" minlength="1" maxlength="200"
+                        placeholder="{{channelData.customMessage}}"></textarea>
+                    {{else}}
+                    <textarea name="customMessage" id="channelSelect" required="required" class="form-control text-light" minlength="1" maxlength="200"
+                        placeholder="Put Your Custom Message Here"></textarea>
+                    {{/if}}
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-info btn-block" type="submit">
+                        Save
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--Set custom roles-->
+    <div class="card mt-2" id="cardColor">
+        <div class="card-body">
+            <form action="/submit/roles/{{guild.id}}?_method=PUT" method="POST">
+                <h5>Custom Roles for levels</h5>
+                <h6 class="">Select the level and put the wanted Role</h6>
+                <div class="form-group mb-2">
+                    <label for="roleSelect">Choose a Role</label>
+                    <select id="roleSelect" class="form-select text-light" required="required" name="customRole">
+                        {{#each fetchResultRoles}}
+                        <option value="{{id}}¿¿¿¿¿////////////{{name}}">{{name}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                <input type="hidden" name="_method" value="PUT">
+                <div class="form-group mb-2">
+                    <input name="customLevel" id="roleSelect" required="required" type="number" min="1" max="100" class="form-control text-light"
+                        placeholder="Wanted Level">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-info btn-block" type="submit">
+                        Save
+                    </button>
+                </div>
+            </form>
+            <h5 class="mt-3">Previous role's rewards</h5>
+            <h6>Press the level reward to delete it</h6>
+            {{#if roleData}}
+            {{#each roleData}}
+            <h5><a href="/submit/roles/delete/{{guildId}}/{{roleId}}/{{level}}" class="text-decoration-none" id="deleteRole">Level
+                    {{level}}: {{roleName}}</a></h5>
+            {{/each}}
+            {{/if}}
+        </div>
+    </div>
+</div>

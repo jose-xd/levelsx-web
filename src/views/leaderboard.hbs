@@ -1,0 +1,20 @@
+<div class="row">
+    {{#if result2}}
+    {{#each result2}}
+    <div class="card mt-2" id="cardColor">
+        <div class="card-body text-light">
+            <h4 class="text-center" id="textLeaderboard">
+                <img src="{{result.avatar}}" alt="Profile Picture" class="rounded-circle" id="pfpImg">
+                Place: {{place}} |
+                Username: {{result.username}} |
+                Level: {{result.level}} |
+                XP: {{result.xp}}
+            </h4>
+        </div>
+    </div>
+    {{/each}}
+</div>
+{{else}}
+<h2>There is no leaderboard for this guild</h2>
+{{/if}}
+</div>

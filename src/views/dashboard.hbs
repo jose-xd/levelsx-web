@@ -1,0 +1,19 @@
+<div class="row">
+    {{#each allGuilds}}
+    {{#if isAdmin}}
+    <div class="col-md-3">
+        <a href="/dashboard/{{guild.id}}" class="text-decoration-none">
+            <div class="card mb-3 text-light" id="cardColor">
+                <div class="card-body">
+                    <h4 class="text-decoration-none">
+                        {{guild.name}}
+                    </h4>
+                    <p class="text-decoration-none">{{guild.id}}</p>
+                </div>
+            </div>
+        </a>
+    </div>
+    {{else}}
+    {{/if}}
+    {{/each}}
+</div>
