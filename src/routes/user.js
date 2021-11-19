@@ -9,7 +9,8 @@ require('dotenv').config();
 const { isAuthenticated } = require('../helpers/auth');
 
 router.get('/dashboard', isAuthenticated, (req, res) => {
-    let allGuilds = []
+    let allGuilds = [];
+    
     for (let i = 0; i < req.user.guilds.length; i++) {
         let isAdmin;
         if (8 & req.user.guilds[i].permissions) {
@@ -20,6 +21,7 @@ router.get('/dashboard', isAuthenticated, (req, res) => {
             isAdmin: isAdmin
         }
     }
+
     res.render('dashboard', {
         allGuilds: allGuilds
     });
@@ -42,7 +44,10 @@ router.get('/dashboard/:id', isAuthenticated, async (req, res) => {
         method: 'GET',
         headers: headers
     }).then(res => res.json());
-    if (!fetchResultBot.user) return res.redirect(`https://discord.com/oauth2/authorize?client_id=858543288637718548&scope=bot+applications.commands&permissions=8&guild_id=${urlId}&redirect_uri=http%3A%2F%2Flocalhost%3A5000%2Fdashboard`);
+    if (!fetchResultBot.user) return res.
+        redirect(
+            `https://discord.com/oauth2/authorize?client_id=858543288637718548&scope=bot+applications.commands&permissions=8&guild_id=${urlId}&redirect_uri=http%3A%2F%2Fec2-34-237-242-160.compute-1.amazonaws.com%3A5000%2Fdashboard`
+        );
 
 
     const channelData = await customChannelSchema.findOne({
