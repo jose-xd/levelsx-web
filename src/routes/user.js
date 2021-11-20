@@ -46,8 +46,8 @@ router.get('/dashboard/:id', isAuthenticated, async (req, res) => {
     }).then(res => res.json());
     if (!fetchResultBot.user) return res.
         redirect(
-            `https://discord.com/oauth2/authorize?client_id=858543288637718548&scope=bot+applications.commands&permissions=8&guild_id=${urlId}&redirect_uri=http%3A%2F%2Flocalhost%3A5000%2Fdashboard`
-            //`https://discord.com/oauth2/authorize?client_id=858543288637718548&scope=bot+applications.commands&permissions=8&guild_id=${urlId}&redirect_uri=http%3A%2F%2Fec2-34-237-242-160.compute-1.amazonaws.com%2Fdashboard`
+            // `https://discord.com/oauth2/authorize?client_id=858543288637718548&scope=bot+applications.commands&permissions=8&guild_id=${urlId}&redirect_uri=http%3A%2F%2Flocalhost%3A5000%2Fdashboard`
+            `https://discord.com/oauth2/authorize?client_id=858543288637718548&scope=bot+applications.commands&permissions=8&guild_id=${urlId}&redirect_uri=http%3A%2F%2Fec2-34-237-242-160.compute-1.amazonaws.com%2Fdashboard`
         );
 
 
